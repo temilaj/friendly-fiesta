@@ -1,1 +1,1 @@
-exports.isValidIntegerReading = value => ((typeof value === number) && (number > 0));
+exports.isValidIntegerReading = value => ((typeof value === 'number') && (value > 0));

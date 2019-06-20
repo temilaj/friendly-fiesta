@@ -18,12 +18,11 @@ router.get('/test', function(req, res) {
 
 router.get('/activity', catchErrors(createActivity));
 
-
 async function createActivity (req, res) {
   const { ip: ipAddress  } = req;
   const [user, created ] = await User.findOrCreate({where: {ipAddress}})
   if (!user) {
-    return res.status(400).json({ error: ''});
+    return res.status(400).json({ error: 'user not created'});
   } else {
     const { temperature, heartRate } = req.query;
     console.log({ temperature, heartRate });
