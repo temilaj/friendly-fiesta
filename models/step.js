@@ -1,14 +1,14 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Steps = sequelize.define('Steps', {
+  const Step = sequelize.define('Step', {
     value: DataTypes.INTEGER
   }, {});
-  Steps.associate = function(models) {
+  Step.associate = function(models) {
     // associations can be defined here
-    Obstacle.belongsTo(models.User, {
+    Step.belongsTo(models.User, {
       onDelete: "CASCADE",
       foreignKey: 'userId',
     });
   };
-  return Steps;
+  return Step;
 };
