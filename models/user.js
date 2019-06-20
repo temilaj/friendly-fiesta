@@ -17,9 +17,14 @@ module.exports = (sequelize, DataTypes) => {
       as: 'heartRates'
     });
 
-    User.hasMany(models.Temperature, {
+    User.hasMany(models.Step, {
       foreignKey: 'userId',
-      as: 'temperatures'
+      as: 'steps'
+    });
+
+    User.hasMany(models.Obstacle, {
+      foreignKey: 'userId',
+      as: 'obstacles'
     });
   };
   return User;
