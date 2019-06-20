@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Obstacle = sequelize.define('Obstacle', {
-    distance: DataTypes.NUMBER
+    distance: DataTypes.INTEGER
   }, {});
   Obstacle.associate = function(models) {
     // associations can be defined here

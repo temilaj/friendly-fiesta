@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const HeartRate = sequelize.define('HeartRate', {
-    value: DataTypes.NUMBER
+    value: DataTypes.INTEGER
   }, {});
   HeartRate.associate = function(models) {
     // associations can be defined here

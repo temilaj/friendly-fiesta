@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Temperature = sequelize.define('Temperature', {
-    value: DataTypes.NUMBER
+    value: DataTypes.INTEGER
   }, {});
   Temperature.associate = function(models) {
     // associations can be defined here

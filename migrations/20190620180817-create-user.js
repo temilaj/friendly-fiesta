@@ -15,10 +15,10 @@ module.exports = {
         type: Sequelize.DATE
       },
       long: {
-        type: Sequelize.NUMBER
+        type: Sequelize.DOUBLE
       },
       lat: {
-        type: Sequelize.NUMBER
+        type: Sequelize.DOUBLE
       },
       createdAt: {
         allowNull: false,

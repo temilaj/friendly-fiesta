@@ -3,8 +3,8 @@ module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     name: DataTypes.STRING,
     birthDate: DataTypes.DATE,
-    long: DataTypes.NUMBER,
-    lat: DataTypes.NUMBER
+    long: DataTypes.DOUBLE,
+    lat: DataTypes.DOUBLE
   }, {});
   User.associate = function(models) {
     // associations can be defined here

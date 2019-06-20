@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       distance: {
-        type: Sequelize.NUMBER
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

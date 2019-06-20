@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Steps = sequelize.define('Steps', {
-    value: DataTypes.NUMBER
+    value: DataTypes.INTEGER
   }, {});
   Steps.associate = function(models) {
     // associations can be defined here
