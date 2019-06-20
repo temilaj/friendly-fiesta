@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { isValidIntegerReading } = require('../helpers/util'); 
+const { catchErrors } = require('../helpers/errorHandlers'); 
 
 const  User = require('../models').User;
 const  Temperature = require('../models').Temperature;
@@ -15,7 +16,10 @@ router.get('/test', function(req, res) {
   res.json({ title: 'Test Smart Assist' });
 });
 
-router.get('/activity', async function(req, res) {
+router.get('/activity', catchErrors(createActivity));
+
+
+async function createActivity (req, res) {
   const { ip: ipAddress  } = req;
   const [user, created ] = await User.findOrCreate({where: {ipAddress}})
   if (!user) {
@@ -35,6 +39,6 @@ router.get('/activity', async function(req, res) {
     res.json({temperature, heartRate});
   } 
   
-});
+}
 
 module.exports = router;
