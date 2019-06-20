@@ -9,22 +9,26 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function(models) {
     // associations can be defined here
     User.hasMany(models.Temperature, {
-      foreignKey: 'userId',
-      as: 'temperatures'
+      foreignKey: {
+        allowNull: false,
+      }
     });
     User.hasMany(models.HeartRate, {
-      foreignKey: 'userId',
-      as: 'heartRates'
+      foreignKey: {
+        allowNull: false,
+      }
     });
 
     User.hasMany(models.Step, {
-      foreignKey: 'userId',
-      as: 'steps'
+      foreignKey: {
+        allowNull: false,
+      }
     });
 
     User.hasMany(models.Obstacle, {
-      foreignKey: 'userId',
-      as: 'obstacles'
+      foreignKey: {
+        allowNull: false,
+      }
     });
   };
   return User;
