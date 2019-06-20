@@ -11,6 +11,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      ipAddress: {
+        type: Sequelize.STRING
+      },
       birthDate: {
         type: Sequelize.DATE
       },
