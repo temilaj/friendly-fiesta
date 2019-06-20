@@ -14,10 +14,10 @@ module.exports = {
       birthDate: {
         type: Sequelize.DATE
       },
-      longitude: {
+      long: {
         type: Sequelize.NUMBER
       },
-      latitude: {
+      lat: {
         type: Sequelize.NUMBER
       },
       createdAt: {

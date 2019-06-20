@@ -42,3 +42,4 @@ public/gallery
 *.env
 
 .vscode/ 
+config.json
