@@ -5,10 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   HeartRate.associate = function(models) {
     // associations can be defined here
-    HeartRate.belongsTo(models.User, {
-      onDelete: "CASCADE",
-      foreignKey: 'userId',
-    });
+    HeartRate.belongsTo(models.User);
   };
   return HeartRate;
 };

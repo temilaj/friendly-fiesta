@@ -5,10 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Temperature.associate = function(models) {
     // associations can be defined here
-    Temperature.belongsTo(models.User, {
-      onDelete: "CASCADE",
-      foreignKey: 'userId',
-    });
+    Temperature.belongsTo(models.User);
   };
   return Temperature;
 };

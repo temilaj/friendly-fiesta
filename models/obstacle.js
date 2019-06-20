@@ -5,10 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Obstacle.associate = function(models) {
     // associations can be defined here
-    Obstacle.belongsTo(models.User, {
-      onDelete: "CASCADE",
-      foreignKey: 'userId',
-    });
+    Obstacle.belongsTo(models.User);
   };
   return Obstacle;
 };

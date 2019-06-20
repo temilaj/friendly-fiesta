@@ -5,10 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Step.associate = function(models) {
     // associations can be defined here
-    Step.belongsTo(models.User, {
-      onDelete: "CASCADE",
-      foreignKey: 'userId',
-    });
+    Step.belongsTo(models.User);
   };
   return Step;
 };
