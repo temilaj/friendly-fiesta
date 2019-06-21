@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import '../node_modules/react-vis/dist/style.css';
 import './stylesheets/style.css';
 
 import Home from './components/Home';
