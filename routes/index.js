@@ -17,27 +17,70 @@ router.get('/test', function(req, res) {
 });
 
 router.get('/activity', catchErrors(createActivity));
+router.get('/temperature', catchErrors(getBodyTemperature));
+router.get('/heartrate', catchErrors(getHeartRate));
 
-async function createActivity (req, res) {
+function createActivity (req, res) {
   const { ip: ipAddress  } = req;
-  const [user, created ] = await User.findOrCreate({where: {ipAddress}})
-  if (!user) {
-    return res.status(400).json({ error: 'user not created'});
-  } else {
+  return User.findOrCreate({where: {ipAddress}})
+  .spread(async (user, created) => {
     const { temperature, heartRate } = req.query;
     console.log({ temperature, heartRate });
     let temperaturePromise;
     let heartRatePromise;
     if (temperature && isValidIntegerReading(temperature)) {
-      temperaturePromise = Temperature.create({ value: temperature, userId: user.id});
+      temperaturePromise = Temperature.create({ value: temperature, UserId: user.id});
     }
     if (heartRate && isValidIntegerReading(heartRate)) {
-      heartRatePromise =  HeartRate.create({ value: heartRate, userId: user.id});
+      heartRatePromise =  HeartRate.create({ value: heartRate, UserId: user.id});
     }
     await Promise.all([temperaturePromise, heartRatePromise]);
     res.json({temperature, heartRate});
-  } 
-  
+  }).catch(error => next(error))
+} 
+
+async function getBodyTemperature (req, res) {
+  const { ip: ipAddress  } = req;
+  return User.findAll({
+    limit: 1,
+    where: {ipAddress},
+    order: [ [ 'createdAt', 'DESC' ]]
+  }).then((users) => {
+    console.log('users')
+    console.log(users[0].id)
+    if (!users.length > 0) {
+      return res.status(400).json({ error: 'user not found'});
+    } else {
+      Temperature.findAll({
+        where: { userId: users[0].id },
+        order: [ [ 'createdAt', 'DESC' ]]
+      }).then(temperatures => {
+        return res.json({temperatures});
+      });
+    } 
+  });
+}
+
+async function getHeartRate (req, res) {
+  const { ip: ipAddress  } = req;
+  return User.findAll({
+    limit: 1,
+    where: {ipAddress},
+    order: [ [ 'createdAt', 'DESC' ]]
+  }).then((users) => {
+    console.log('users')
+    console.log(users[0].id)
+    if (!users.length > 0) {
+      return res.status(400).json({ error: 'user not found'});
+    } else {
+      HeartRate.findAll({
+        where: { userId: users[0].id },
+        order: [ [ 'createdAt', 'DESC' ]]
+      }).then(heartRates => {
+        return res.json({heartRates});
+      });
+    } 
+  });
 }
 
 module.exports = router;
