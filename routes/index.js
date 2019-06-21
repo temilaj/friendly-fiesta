@@ -19,6 +19,7 @@ router.get('/test', function(req, res) {
 router.get('/activity', catchErrors(createActivity));
 router.get('/temperature', catchErrors(getBodyTemperature));
 router.get('/heartrate', catchErrors(getHeartRate));
+router.get('/token', catchErrors(receivePushToken));
 
 function createActivity (req, res) {
   const { ip: ipAddress  } = req;
@@ -28,7 +29,7 @@ function createActivity (req, res) {
     console.log({ temperature, heartRate });
     let temperaturePromise;
     let heartRatePromise;
-    if (temperature && isValidIntegerReading(temperature)) {
+    if (temperature && !isNaN(temperature)) {
       temperaturePromise = Temperature.create({ value: temperature, UserId: user.id});
     }
     if (heartRate && isValidIntegerReading(heartRate)) {
@@ -83,4 +84,19 @@ async function getHeartRate (req, res) {
   });
 }
 
+async function receivePushToken (req, res) {
+  const {token, user} = req.body;
+  console.log(token);
+  return User.findById(user.userId).then((user) => {
+    if (!user) {
+      return res.status(400).json({ error: 'user not found'});
+    }
+    User.update({token}, {
+      where: { id },
+      returning: true,
+      plain: true,
+    }).then(() => res.json({message: 'token received successfully'}));
+  })
+  
+}
 module.exports = router;
