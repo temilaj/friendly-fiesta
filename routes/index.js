@@ -54,6 +54,7 @@ async function getBodyTemperature (req, res) {
     } else {
       Temperature.findAll({
         where: { userId: users[0].id },
+        limit: 15,
         order: [ [ 'createdAt', 'DESC' ]]
       }).then(temperatures => {
         return res.json({temperatures});
@@ -76,6 +77,7 @@ async function getHeartRate (req, res) {
     } else {
       HeartRate.findAll({
         where: { userId: users[0].id },
+        limit: 15,
         order: [ [ 'createdAt', 'DESC' ]]
       }).then(heartRates => {
         return res.json({heartRates});

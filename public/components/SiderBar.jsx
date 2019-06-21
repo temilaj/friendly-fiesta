@@ -16,25 +16,13 @@ class SiderBar extends React.Component {
                     <li className="nav-item">
                         <a className="nav-link" href="#">
                         <span data-feather="shopping-cart"></span>
-                        Products
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">
-                        <span data-feather="users"></span>
-                        Customers
+                        User
                         </a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="#">
                         <span data-feather="bar-chart-2"></span>
                         Reports
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">
-                        <span data-feather="layers"></span>
-                        Integrations
                         </a>
                     </li>
                     </ul>
@@ -56,18 +44,6 @@ class SiderBar extends React.Component {
                         <a className="nav-link" href="#">
                         <span data-feather="file-text"></span>
                         Last quarter
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">
-                        <span data-feather="file-text"></span>
-                        Social engagement
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">
-                        <span data-feather="file-text"></span>
-                        Year-end sale
                         </a>
                     </li>
                     </ul>
