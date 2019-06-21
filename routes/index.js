@@ -91,7 +91,7 @@ async function receivePushToken (req, res) {
     if (!user) {
       return res.status(400).json({ error: 'user not found'});
     }
-    User.update({token}, {
+    User.update({pushToken: token}, {
       where: { id },
       returning: true,
       plain: true,

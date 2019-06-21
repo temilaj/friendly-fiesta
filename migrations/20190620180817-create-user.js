@@ -11,6 +11,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      pushToken: {
+        type: Sequelize.STRING
+      },
       ipAddress: {
         type: Sequelize.STRING
       },
