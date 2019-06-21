@@ -45,7 +45,7 @@ module.exports = {
 		publicPath: '/dist/',
 		open: true,
 		proxy: {
-		  '/api': 'http://localhost:3500'
+		  '/api': 'http://localhost:3000'
 		}
 	},
 }
